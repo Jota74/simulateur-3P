@@ -1,3 +1,17 @@
+// Fonction pour vérifier et colorer le contour de la date de naissance
+function checkDateValidity() {
+    const dateInput = document.getElementById('dateNaissance');
+    if (dateInput.validity.valid) {
+        dateInput.style.borderColor = '#4caf50'; // Couleur verte si la date est valide
+    } else {
+        dateInput.style.borderColor = '#e57373'; // Couleur rouge si la date n'est pas valide
+    }
+}
+
+// Écouteur d'événement pour la date de naissance
+document.getElementById('dateNaissance').addEventListener('input', checkDateValidity);
+
+// Fonction pour gérer la sélection des options
 document.querySelectorAll('.choice').forEach(choice => {
     choice.addEventListener('click', () => {
         const type = choice.getAttribute('data-type');
@@ -7,12 +21,14 @@ document.querySelectorAll('.choice').forEach(choice => {
     });
 });
 
+// Fonction pour mettre à jour l'affichage du slider
 const updateDisplay = (slider, display, min, step) => {
     let value = Math.max(1, parseInt(slider.value)); // 1 est le minimum du slider pour correspondre à 100 CHF
     let displayValue = min + (value - 1) * step;
     display.textContent = `${displayValue} CHF / mois`;
 };
 
+// Fonction pour calculer le capital au moment de la retraite
 const calculateCapital = () => {
     const age = parseInt(document.getElementById('ageSlider').value);
     const yearsTo65 = 65 - age;
@@ -45,6 +61,7 @@ const calculateCapital = () => {
     document.getElementById('total-capital').querySelector('strong').textContent = Math.round(total).toLocaleString('fr-CH') + ' CHF';
 };
 
+// Écouteurs pour les sliders
 document.getElementById('ageSlider').oninput = function() {
     document.getElementById('age-display').textContent = `${this.value} ans`;
     calculateCapital();
@@ -55,6 +72,7 @@ document.getElementById('savingsSlider').oninput = function() {
     calculateCapital();
 };
 
+// Écouteur pour le bouton de demande d'offre
 document.getElementById('request-offer-button').addEventListener('click', () => {
     alert('Votre demande d\'offre pour un capital de ' + document.getElementById('total-capital').querySelector('strong').textContent + ' a été envoyée!');
 });
