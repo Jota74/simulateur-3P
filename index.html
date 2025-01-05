@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur 3ème Pilier</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2></h2>
+
+        <div class="choice-group">
+            <h3>Vous êtes :</h3>
+            <div class="choice" data-type="gender">Un homme</div>
+            <div class="choice" data-type="gender">Une femme</div>
+        </div>
+        <div class="choice-group">
+            <h3>Votre situation :</h3>
+            <div class="choice" data-type="status">Salarié</div>
+            <div class="choice" data-type="status">Autre</div>
+        </div>
+
+        <div class="slider-container">
+            <h3>Âge :</h3>
+            <div class="slider-wrapper">
+                <input type="range" min="25" max="65" value="25" class="slider" id="ageSlider">
+                <div class="slider-value" id="age-display">25 ans</div>
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <h3>Montant épargné :</h3>
+            <div class="slider-wrapper">
+                <input type="range" min="1" max="12" value="1" step="1" class="slider" id="savingsSlider">
+                <div class="slider-value" id="savings-display">100 CHF / mois</div>
+            </div>
+        </div>
+
+        <div class="result-container">
+            <div id="capital-display">
+                <span>Votre capital à 65 ans :</span> 
+                <strong class="highlighted">0 CHF</strong>
+            </div>
+
+            <div id="annual-tax-savings">
+                <span>Économie d'impôt par an :</span> 
+                <strong class="highlighted">0 CHF</strong>
+            </div>
+
+            <div id="tax-savings">
+                <span>Économie d'impôt à 65 ans :</span> 
+                <strong class="highlighted">0 CHF</strong>
+            </div>
+        </div>
+
+        <button id="request-offer-button">Recevoir mon offre par mail</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
